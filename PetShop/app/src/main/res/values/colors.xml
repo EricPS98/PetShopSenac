@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3B8FBF</color>
+    <color name="colorPrimaryDark">#285F80</color>
+    <color name="colorAccent">#4EBDFF</color>
+    <!-- Fundo do topo do menu: #143040 -->
+    <!-- Cor reserva: #47ABE6 -->
+</resources>

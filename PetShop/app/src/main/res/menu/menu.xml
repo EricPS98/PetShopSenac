@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_configuracoes"
+            android:checked="false"
+            android:title="Configurações" />
+        <item
+            android:id="@+id/action_perfil"
+            android:title="Meu Perfil" />
+        <item
+            android:id="@+id/action_carrinho"
+            android:title="Carrinho" />
+        <item
+            android:id="@+id/action_compras"
+            android:title="Compras realizadas" />
+        <item
+            android:id="@+id/action_about"
+            android:title="Sobre" />
+        <item
+            android:id="@+id/action_exit"
+            android:title="Sair" />
+    </group>
+
+</menu>
