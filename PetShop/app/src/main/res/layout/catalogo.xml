@@ -9,7 +9,7 @@
         android:orientation="vertical"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
-        >
+        tools:context=".Catalogo">
 
         <LinearLayout
             android:layout_width="match_parent"

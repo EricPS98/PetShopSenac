@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Perfil extends Fragment {
+public class Cadastro extends Fragment {
 
 
-    public Perfil() {
+    public Cadastro() {
         // Required empty public constructor
     }
 
@@ -24,8 +24,9 @@ public class Perfil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Infla o XML de perfil de usuário
-        return inflater.inflate(R.layout.perfil, container, false);
+
+        //Infla o XML de cadastro
+        return inflater.inflate(R.layout.cadastro, container, false);
     }
 
 }

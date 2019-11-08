@@ -42,9 +42,29 @@ public class MainActivity extends AppCompatActivity {
 
                 drawerLayout.closeDrawers();
 
+                if (menuItem.getItemId() == R.id.action_inicio) {
+                    Catalogo fragInicio = new Catalogo();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragInicio).commit();
+                    return true;
+                }
                 if (menuItem.getItemId() == R.id.action_perfil) {
-                    Perfil frag01 = new Perfil();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, frag01).commit();
+                    Perfil fragPerfil = new Perfil();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragPerfil).commit();
+                    return true;
+                }
+                if (menuItem.getItemId() == R.id.action_carrinho) {
+                    Carrinho fragCarrinho = new Carrinho();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragCarrinho).commit();
+                    return true;
+                }
+                if (menuItem.getItemId() == R.id.action_compras) {
+                    HistoricoCompras fragCompras = new HistoricoCompras();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragCompras).commit();
+                    return true;
+                }
+                if (menuItem.getItemId() == R.id.action_sobre) {
+                    Sobre fragSobre = new Sobre();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragSobre).commit();
                     return true;
                 }
                 return false;
@@ -56,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
     }
 
     @Override

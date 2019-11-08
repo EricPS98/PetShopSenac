@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Perfil extends Fragment {
+public class HistoricoCompras extends Fragment {
 
 
-    public Perfil() {
+    public HistoricoCompras() {
         // Required empty public constructor
     }
 
@@ -24,8 +24,8 @@ public class Perfil extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Infla o XML de perfil de usuário
-        return inflater.inflate(R.layout.perfil, container, false);
+        //Infla o XML de compras realizadas
+        return inflater.inflate(R.layout.historico_compras, container, false);
     }
 
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/action_configuracoes"
+            android:id="@+id/action_inicio"
             android:checked="false"
-            android:title="Configurações" />
+            android:title="Início" />
         <item
             android:id="@+id/action_perfil"
             android:title="Meu Perfil" />
@@ -18,11 +19,12 @@
             android:id="@+id/action_compras"
             android:title="Compras realizadas" />
         <item
-            android:id="@+id/action_about"
+            android:id="@+id/action_sobre"
             android:title="Sobre" />
         <item
-            android:id="@+id/action_exit"
-            android:title="Sair" />
+            android:id="@+id/action_sair"
+            android:title="Sair"
+            app:showAsAction="collapseActionView" />
     </group>
 
 </menu>
