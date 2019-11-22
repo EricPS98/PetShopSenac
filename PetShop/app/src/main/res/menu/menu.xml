@@ -8,18 +8,19 @@
         <item
             android:id="@+id/action_inicio"
             android:checked="false"
+            android:icon="@drawable/nav_icon_home"
             android:title="Início" />
         <item
             android:id="@+id/action_perfil"
+            android:icon="@drawable/nav_icon_profile"
             android:title="Meu Perfil" />
         <item
-            android:id="@+id/action_carrinho"
-            android:title="Carrinho" />
-        <item
             android:id="@+id/action_compras"
+            android:icon="@drawable/nav_icon_purchase"
             android:title="Compras realizadas" />
         <item
             android:id="@+id/action_sobre"
+            android:icon="@drawable/nav_icon_about"
             android:title="Sobre" />
 
     </group>

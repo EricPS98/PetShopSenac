@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="195dp"
     android:background="#143040"
@@ -12,7 +13,8 @@
         android:layout_width="123dp"
         android:layout_height="125dp"
         android:layout_gravity="center"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/nav_icon_logo" />
     <!--app:srcCompat="@drawable/nav_icon_user" -->
 
 
@@ -23,7 +25,7 @@
         android:layout_gravity="center"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
-        android:text="Menu Top"
+        android:text="PetShop Senac"
         android:textAlignment="textStart"
         android:textColor="#ffffff"
         android:textSize="20sp" />

@@ -1,4 +1,4 @@
-package com.example.petshop.fragmentos;
+package com.example.petshop;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -11,6 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.petshop.R;
+import com.example.petshop.fragmentos.Carrinho;
+import com.example.petshop.fragmentos.Catalogo;
+import com.example.petshop.fragmentos.HistoricoCompras;
+import com.example.petshop.fragmentos.Perfil;
+import com.example.petshop.fragmentos.Sobre;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+
+    Catalogo catalogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         //Habilita o botão de abertura do menu
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        catalogo = new Catalogo();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, catalogo).commit();
 
         navigationView = findViewById(R.id.navigation_view);
 
@@ -69,10 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragSobre).commit();
                     return true;
                 }
-                if (menuItem.getItemId() == R.id.action_sair) {
-                    finish();
-                    return true;
-                }
+
                 return false;
             }
         });
