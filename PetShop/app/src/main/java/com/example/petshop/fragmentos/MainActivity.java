@@ -1,4 +1,4 @@
-package com.example.eric.petshop;
+package com.example.petshop.fragmentos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.petshop.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragSobre).commit();
                     return true;
                 }
+                if (menuItem.getItemId() == R.id.action_sair) {
+                    finish();
+                    return true;
+                }
                 return false;
             }
         });
@@ -85,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_top_bar, menu);
+        return true;
     }
 
 }

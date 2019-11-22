@@ -1,4 +1,4 @@
-package com.example.eric.petshop;
+package com.example.petshop;
 
 import org.junit.Test;
 

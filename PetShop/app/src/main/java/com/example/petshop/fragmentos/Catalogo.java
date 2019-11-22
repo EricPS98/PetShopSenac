@@ -1,4 +1,4 @@
-package com.example.eric.petshop;
+package com.example.petshop.fragmentos;
 
 
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.eric.petshop.api.ApiProduto;
-import com.example.eric.petshop.modelo.ModeloProduto;
+import com.example.petshop.R;
+import com.example.petshop.retrofit.api.ApiProduto;
+import com.example.petshop.retrofit.modelo.ModeloProduto;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -33,6 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Catalogo extends Fragment {
 
     private ViewGroup mensagens;
+    private FloatingActionButton fbPesquisar;
 
     public Catalogo() {
         // Required empty public constructor
@@ -45,7 +50,20 @@ public class Catalogo extends Fragment {
         //Infla o XML de catálogo
         View view = inflater.inflate(R.layout.catalogo, container, false);
 
-        mensagens = view.findViewById(R.id.container);
+        mensagens = view.findViewById(R.id.produtos);
+        fbPesquisar = view.findViewById(R.id.fbPesquisar);
+
+        fbPesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PesquisarProdutos pesquisarProdutos = new PesquisarProdutos();
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.frag_container, pesquisarProdutos);
+                fragmentTransaction.commit();
+            }
+        });
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://oficinacordova.azurewebsites.net/").addConverterFactory(GsonConverterFactory.create()).build();
 
@@ -77,7 +95,7 @@ public class Catalogo extends Fragment {
 
     private void addItem(String tTitulo, String tMensagem, int id){
 
-        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.catalogo, mensagens, false);
+        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, mensagens, false);
         TextView titulo = cardView.findViewById(R.id.titulo);
         TextView mensagem = cardView.findViewById(R.id.mensagem);
         ImageView imagem = cardView.findViewById(R.id.imagem);

@@ -1,6 +1,6 @@
-package com.example.eric.petshop.api;
+package com.example.petshop.retrofit.api;
 
-import com.example.eric.petshop.modelo.ModeloProduto;
+import com.example.petshop.retrofit.modelo.ModeloProduto;
 
 import java.util.List;
 

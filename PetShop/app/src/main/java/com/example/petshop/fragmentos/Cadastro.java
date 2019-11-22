@@ -1,4 +1,4 @@
-package com.example.eric.petshop;
+package com.example.petshop.fragmentos;
 
 
 import android.os.Bundle;
@@ -9,14 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.petshop.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistoricoCompras extends Fragment {
+public class Cadastro extends Fragment {
 
 
-    public HistoricoCompras() {
+    public Cadastro() {
         // Required empty public constructor
     }
 
@@ -24,8 +25,9 @@ public class HistoricoCompras extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Infla o XML de compras realizadas
-        return inflater.inflate(R.layout.historico_compras, container, false);
+
+        //Infla o XML de cadastro
+        return inflater.inflate(R.layout.cadastro, container, false);
     }
 
 }

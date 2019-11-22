@@ -1,4 +1,4 @@
-package com.example.eric.petshop;
+package com.example.petshop.fragmentos;
 
 
 import android.os.Bundle;
@@ -10,13 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.petshop.R;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Sobre extends Fragment {
+public class PesquisarProdutos extends Fragment {
 
 
-    public Sobre() {
+    public PesquisarProdutos() {
         // Required empty public constructor
     }
 
@@ -24,9 +26,7 @@ public class Sobre extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        //Infla o XML de sobre
-        return inflater.inflate(R.layout.sobre, container, false);
+        return inflater.inflate(R.layout.pesquisar_produtos, container, false);
     }
 
 }

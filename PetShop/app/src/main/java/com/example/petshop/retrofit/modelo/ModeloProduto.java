@@ -1,4 +1,4 @@
-package com.example.eric.petshop.modelo;
+package com.example.petshop.retrofit.modelo;
 
 public class ModeloProduto {
 
