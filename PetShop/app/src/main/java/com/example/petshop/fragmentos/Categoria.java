@@ -34,7 +34,7 @@ public class Categoria extends Fragment {
 
     private int id;
     private String titulo;
-    private ViewGroup mensagens;
+    private ViewGroup conteudo;
 
     public Categoria(int id, String titulo) {
 
@@ -43,21 +43,21 @@ public class Categoria extends Fragment {
 
     }
 
-    private void addItem(String tTitulo, String tMensagem, int id){
+    private void addItem(String tTitulo, String tMensagem, int id) {
 
-        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, mensagens, false);
+        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, conteudo, false);
         TextView titulo = cardView.findViewById(R.id.titulo);
         TextView mensagem = cardView.findViewById(R.id.mensagem);
         ImageView imagem = cardView.findViewById(R.id.imagem);
 
-        String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" +id;
+        String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + id;
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         imageLoader.displayImage(url, imagem);
 
         titulo.setText(tTitulo);
         mensagem.setText(tMensagem);
-        mensagens.addView(cardView);
+        conteudo.addView(cardView);
 
     }
 
@@ -65,28 +65,30 @@ public class Categoria extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
+        
+        // Infla o XML de categoria
         View view = inflater.inflate(R.layout.categoria, container, false);
-        mensagens = view.findViewById(R.id.produtos);
+        conteudo = view.findViewById(R.id.produtos);
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://oficinacordova.azurewebsites.net/").addConverterFactory(GsonConverterFactory.create()).build();
 
         ApiProduto apiProduto = retrofit.create(ApiProduto.class);
-        //Listar produtos por categoria
-        Call<List<ModeloProduto>> callModeloProduto = apiProduto.listarProdutos();
+        
+        //Listar produtos por categoria a partir do ID
+        Call<List<ModeloProduto>> callModeloProduto = apiProduto.listarProdutoPorCategoria(id);
 
         Callback<List<ModeloProduto>> callbackProduto = new Callback<List<ModeloProduto>>() {
             @Override
             public void onResponse(Call<List<ModeloProduto>> call, Response<List<ModeloProduto>> response) {
                 List<ModeloProduto> listaProd = response.body();
-                for (int i = 0; i < listaProd.size(); i++){
+                for (int i = 0; i < listaProd.size(); i++) {
                     ModeloProduto m = listaProd.get(i);
 
-                    addItem(m.getNomeProduto(), String.valueOf(m.getPrecProduto()),  m.getIdProduto());
+                    addItem(m.getNomeProduto(), String.valueOf(m.getPrecProduto()), m.getIdProduto());
                 }
 
             }
+
             @Override
             public void onFailure(Call<List<ModeloProduto>> call, Throwable t) {
                 t.printStackTrace();

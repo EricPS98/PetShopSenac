@@ -17,5 +17,5 @@ public interface ApiProduto {
     Call<ModeloProduto> getProduto(@Path("id") Integer id);
 
     @GET("/android/rest/produto/categoria/{id}")
-    Call<List<ModeloProduto>> getProdutoByCategoria(@Path("id") Integer id);
+    Call<List<ModeloProduto>> listarProdutoPorCategoria(@Path("id") Integer id);
 }
