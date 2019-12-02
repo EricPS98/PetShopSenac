@@ -5,25 +5,18 @@ import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.petshop.R;
 import com.example.petshop.retrofit.api.ApiCategoria;
-import com.example.petshop.retrofit.api.ApiProduto;
 import com.example.petshop.retrofit.modelo.ModeloCategoria;
-import com.example.petshop.retrofit.modelo.ModeloProduto;
-import com.example.petshop.util.TabPageAdapter;
+import com.example.petshop.utils.TabPageAdapter;
 import com.google.android.material.tabs.TabLayout;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.List;
 

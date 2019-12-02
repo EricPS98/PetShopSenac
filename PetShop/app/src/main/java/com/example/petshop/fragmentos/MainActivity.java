@@ -1,4 +1,4 @@
-package com.example.petshop;
+package com.example.petshop.fragmentos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -11,11 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.petshop.R;
-import com.example.petshop.fragmentos.Carrinho;
-import com.example.petshop.fragmentos.Catalogo;
-import com.example.petshop.fragmentos.HistoricoCompras;
-import com.example.petshop.fragmentos.Perfil;
-import com.example.petshop.fragmentos.Sobre;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,11 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 if (menuItem.getItemId() == R.id.action_perfil) {
                     Perfil fragPerfil = new Perfil();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragPerfil).commit();
-                    return true;
-                }
-                if (menuItem.getItemId() == R.id.action_carrinho) {
-                    Carrinho fragCarrinho = new Carrinho();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, fragCarrinho).commit();
                     return true;
                 }
                 if (menuItem.getItemId() == R.id.action_compras) {

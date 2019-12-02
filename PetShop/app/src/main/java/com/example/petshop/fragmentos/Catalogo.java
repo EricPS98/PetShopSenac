@@ -1,6 +1,7 @@
 package com.example.petshop.fragmentos;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import com.example.petshop.R;
 import com.example.petshop.retrofit.api.ApiProduto;
 import com.example.petshop.retrofit.modelo.ModeloProduto;
+import com.example.petshop.utils.Util;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -36,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class Catalogo extends Fragment {
 
-    private ViewGroup mensagens;
+    private ViewGroup conteudo;
     private FloatingActionButton fbPesquisar;
 
     public Catalogo() {
@@ -50,7 +52,7 @@ public class Catalogo extends Fragment {
         //Infla o XML de catálogo
         View view = inflater.inflate(R.layout.catalogo, container, false);
 
-        mensagens = view.findViewById(R.id.produtos);
+        conteudo = view.findViewById(R.id.produtos);
         fbPesquisar = view.findViewById(R.id.fbPesquisar);
 
         fbPesquisar.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +79,7 @@ public class Catalogo extends Fragment {
                 for (int i = 0; i < listaProd.size(); i++){
                     ModeloProduto m = listaProd.get(i);
 
-                    addItem(m.getNomeProduto(), String.valueOf(m.getPrecProduto()),  m.getIdProduto());
+                    addItem(m.getNomeProduto(), m.getPrecProduto(),  m.getIdProduto());
                 }
 
             }
@@ -93,21 +95,31 @@ public class Catalogo extends Fragment {
 
     }
 
-    private void addItem(String tTitulo, String tMensagem, int id){
+    private void addItem(String tTitulo, Float tPreco, final int id){
 
-        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, mensagens, false);
-        TextView titulo = cardView.findViewById(R.id.titulo);
-        TextView mensagem = cardView.findViewById(R.id.mensagem);
+        CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, conteudo, false);
+        TextView titulo = cardView.findViewById(R.id.tTitulo);
+        TextView preco = cardView.findViewById(R.id.tPrecoProduto);
         ImageView imagem = cardView.findViewById(R.id.imagem);
 
         String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" +id;
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage(url, imagem);
 
+        imageLoader.displayImage(url, imagem);
         titulo.setText(tTitulo);
-        mensagem.setText(tMensagem);
-        mensagens.addView(cardView);
+        preco.setText(Util.formataValor(tPreco));
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), DetalheProduto.class);
+                i.putExtra("id", id);
+                startActivity(i);
+            }
+        });
+
+        conteudo.addView(cardView);
 
     }
 

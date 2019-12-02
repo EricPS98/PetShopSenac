@@ -1,6 +1,7 @@
 package com.example.petshop.fragmentos;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.petshop.R;
 import com.example.petshop.retrofit.api.ApiProduto;
 import com.example.petshop.retrofit.modelo.ModeloProduto;
+import com.example.petshop.utils.Util;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -43,11 +45,11 @@ public class Categoria extends Fragment {
 
     }
 
-    private void addItem(String tTitulo, String tMensagem, int id) {
+    private void addItem(String tTitulo, Float tMensagem, final int id) {
 
         CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, conteudo, false);
-        TextView titulo = cardView.findViewById(R.id.titulo);
-        TextView mensagem = cardView.findViewById(R.id.mensagem);
+        TextView titulo = cardView.findViewById(R.id.tTitulo);
+        TextView preco = cardView.findViewById(R.id.tPrecoProduto);
         ImageView imagem = cardView.findViewById(R.id.imagem);
 
         String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + id;
@@ -56,8 +58,17 @@ public class Categoria extends Fragment {
         imageLoader.displayImage(url, imagem);
 
         titulo.setText(tTitulo);
-        mensagem.setText(tMensagem);
+        preco.setText(Util.formataValor(tMensagem));
         conteudo.addView(cardView);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), DetalheProduto.class);
+                i.putExtra("id", id);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -84,7 +95,7 @@ public class Categoria extends Fragment {
                 for (int i = 0; i < listaProd.size(); i++) {
                     ModeloProduto m = listaProd.get(i);
 
-                    addItem(m.getNomeProduto(), String.valueOf(m.getPrecProduto()), m.getIdProduto());
+                    addItem(m.getNomeProduto(), m.getPrecProduto(), m.getIdProduto());
                 }
 
             }

@@ -43,6 +43,7 @@ public class ModeloProduto {
     public float getPrecProduto() {
         return precProduto;
     }
-
-
 }
+
+
+

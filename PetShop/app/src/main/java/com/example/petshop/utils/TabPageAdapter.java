@@ -1,4 +1,4 @@
-package com.example.petshop.util;
+package com.example.petshop.utils;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
