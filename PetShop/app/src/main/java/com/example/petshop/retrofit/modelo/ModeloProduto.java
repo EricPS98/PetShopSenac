@@ -43,6 +43,38 @@ public class ModeloProduto {
     public float getPrecProduto() {
         return precProduto;
     }
+
+    public void setDescontoPromocao(float descontoPromocao) {
+        this.descontoPromocao = descontoPromocao;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public void setQtdMinEstoque(int qtdMinEstoque) {
+        this.qtdMinEstoque = qtdMinEstoque;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public void setDescProduto(String descProduto) {
+        this.descProduto = descProduto;
+    }
+
+    public void setAtivoProduto(boolean ativoProduto) {
+        this.ativoProduto = ativoProduto;
+    }
+
+    public void setPrecProduto(float precProduto) {
+        this.precProduto = precProduto;
+    }
 }
 
 

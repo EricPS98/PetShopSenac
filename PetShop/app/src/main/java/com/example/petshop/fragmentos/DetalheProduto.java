@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetalheProduto extends AppCompatActivity {
 
     private ImageView imagem;
-    private TextView tTitulo, tPreco, tPrecoFinal, tDescricao;
+    private TextView tTitulo, tPreco, tDescricao;
     private Button bAdd;
 
 
@@ -43,60 +43,50 @@ public class DetalheProduto extends AppCompatActivity {
         imagem = findViewById(R.id.imagemDetalhe);
         tTitulo = findViewById(R.id.tTitulo);
         tPreco = findViewById(R.id.tPreco);
-        tPrecoFinal = findViewById(R.id.tPrecoFinal);
         tDescricao = findViewById(R.id.tDescricao);
         bAdd = findViewById(R.id.bAdd);
 
         Intent i = getIntent();
-        int id = i.getIntExtra("id",0);
+        int id = i.getIntExtra("id", 0);
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://oficinacordova.azurewebsites.net/").addConverterFactory(GsonConverterFactory.create()).build();
 
         ApiProduto apiProd = retrofit.create(ApiProduto.class);
         Call<ModeloProduto> call = apiProd.getProduto(id);
 
-        call.enqueue(new Callback<ModeloProduto>() {
+        Callback<ModeloProduto> callbackProduto = new Callback<ModeloProduto>() {
             @Override
             public void onResponse(Call<ModeloProduto> call, Response<ModeloProduto> response) {
-                final ModeloProduto produto =  response.body();
+
+                final ModeloProduto produto = response.body();
+
+                //Titulo da página recebe nome do produto
+                getSupportActionBar().setTitle(produto.getNomeProduto());
 
                 try {
-                    if (produto.getDescontoPromocao() == 0) {
-                        tPrecoFinal.setVisibility(View.INVISIBLE);
-                        tPreco.setText(Util.formataValor(produto.getPrecProduto()));
-
-                    } else {
-                        Float precoTotal = (produto.getPrecProduto() - produto.getDescontoPromocao());
-
-                        SpannableString preco = new SpannableString(Util.formataValor(produto.getPrecProduto()));
-                        preco.setSpan(new BackgroundColorSpan(Color.YELLOW), 0, preco.length(), 0);
-
-                        tPreco.setText(preco);
-                        tPrecoFinal.setText("Promoção: " + Util.formataValor(precoTotal));
-                    }
-
-                    tTitulo.setText(produto.getNomeProduto());
-                    tDescricao.setText(produto.getDescProduto());
 
                     String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + produto.getIdProduto();
                     ImageLoader imageLoader = ImageLoader.getInstance();
                     imageLoader.init(ImageLoaderConfiguration.createDefault(DetalheProduto.this));
 
                     imageLoader.displayImage(url, imagem);
+                    tPreco.setText(Util.formataValor(produto.getPrecProduto()));
+                    tTitulo.setText(produto.getNomeProduto());
+                    tDescricao.setText(String.valueOf(produto.getDescProduto()));
 
                     bAdd.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Singleton s = Singleton.getInstance();
                             s.addCarrinho(produto);
-                            showDialog("OK", "Produto adicionado no Carrinho");
+                            showDialog("OK", "Produto adicionado ao Carrinho");
                         }
                     });
 
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
-                
+
             }
 
             @Override
@@ -104,8 +94,10 @@ public class DetalheProduto extends AppCompatActivity {
                 t.printStackTrace();
                 showDialog("Falha ao obter a lista de produtos", "erro");
             }
-        });
+        };
+        call.enqueue(callbackProduto);
     }
+
     private void showDialog(String val, String title) {
         AlertDialog.Builder builder = new AlertDialog.Builder(DetalheProduto.this);
         builder.setMessage(val);
