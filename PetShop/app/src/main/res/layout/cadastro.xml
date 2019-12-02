@@ -94,7 +94,7 @@
             android:text="Limpar Informações" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bAvancar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

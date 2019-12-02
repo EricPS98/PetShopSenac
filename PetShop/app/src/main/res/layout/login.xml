@@ -8,7 +8,7 @@
     tools:context=".fragmentos.Login">
 
     <Button
-        android:id="@+id/bLogar2"
+        android:id="@+id/bCadastrar"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginStart="228dp"
