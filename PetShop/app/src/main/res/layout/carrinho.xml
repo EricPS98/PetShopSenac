@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragmentos.Carrinho">
 
     <LinearLayout
@@ -20,12 +21,20 @@
             android:textSize="36sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tConteudo"
+        <ScrollView
+            android:id="@+id/svProdutos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            android:text="Você ainda não adicionou nada no Carrinho"
-            android:textAlignment="center" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tConteudo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp"
+                android:text="Você ainda não adicionou nada no Carrinho"
+                android:textAlignment="center" />
+
+        </ScrollView>
+
     </LinearLayout>
 </LinearLayout>

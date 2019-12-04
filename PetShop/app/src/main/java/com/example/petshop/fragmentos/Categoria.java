@@ -42,12 +42,22 @@ public class Categoria extends Fragment {
 
         this.id = id;
         this.titulo = titulo;
-
     }
 
-    private void addItem(String tTitulo, Float tMensagem, final int id) {
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getActivity() instanceof MainActivity){
+            MainActivity mainActivity = (MainActivity)getActivity();
+            mainActivity.setTitle(R.string.app_name);
+        }
+    }
+
+    private void addItem(String tTitulo, Float tPreco, final int id) {
+
 
         CardView cardView = (CardView) LayoutInflater.from(getActivity()).inflate(R.layout.item_produto, conteudo, false);
+
         TextView titulo = cardView.findViewById(R.id.tTitulo);
         TextView preco = cardView.findViewById(R.id.tPrecoProduto);
         ImageView imagem = cardView.findViewById(R.id.imagem);
@@ -58,7 +68,7 @@ public class Categoria extends Fragment {
         imageLoader.displayImage(url, imagem);
 
         titulo.setText(tTitulo);
-        preco.setText(Util.formataValor(tMensagem));
+        preco.setText(Util.formataValor(tPreco));
         conteudo.addView(cardView);
 
         cardView.setOnClickListener(new View.OnClickListener() {

@@ -41,7 +41,8 @@
                     android:id="@+id/tTitulo"
                     style="?android:textAppearanceLarge"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tPrecoProduto"
