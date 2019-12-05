@@ -42,7 +42,7 @@ public class DetalheProduto extends AppCompatActivity {
 
         imagem = findViewById(R.id.imagemDetalhe);
         tTitulo = findViewById(R.id.tTitulo);
-        tPreco = findViewById(R.id.tPreco);
+        tPreco = findViewById(R.id.tPrecoProduto);
         tDescricao = findViewById(R.id.tDescricao);
         bAdd = findViewById(R.id.bAdd);
 
@@ -54,16 +54,16 @@ public class DetalheProduto extends AppCompatActivity {
         ApiProduto apiProd = retrofit.create(ApiProduto.class);
         Call<ModeloProduto> call = apiProd.getProduto(id);
 
-        Callback<ModeloProduto> callbackProduto = new Callback<ModeloProduto>() {
+
+        call.enqueue(new Callback<ModeloProduto>() {
             @Override
             public void onResponse(Call<ModeloProduto> call, Response<ModeloProduto> response) {
-
-                final ModeloProduto produto = response.body();
-
-                //Titulo da página recebe nome do produto
-                getSupportActionBar().setTitle(produto.getNomeProduto());
-
                 try {
+
+                    final ModeloProduto produto = response.body();
+
+                    //Titulo da página recebe nome do produto
+                    getSupportActionBar().setTitle(produto.getNomeProduto());
 
                     String url = "https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + produto.getIdProduto();
                     ImageLoader imageLoader = ImageLoader.getInstance();
@@ -86,16 +86,13 @@ public class DetalheProduto extends AppCompatActivity {
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
-
             }
 
             @Override
             public void onFailure(Call<ModeloProduto> call, Throwable t) {
-                t.printStackTrace();
-                showDialog("Falha ao obter a lista de produtos", "erro");
+
             }
-        };
-        call.enqueue(callbackProduto);
+        });
     }
 
     private void showDialog(String val, String title) {

@@ -1,7 +1,6 @@
 package com.example.petshop.fragmentos;
 
 import android.content.Intent;
-import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +35,7 @@ public class Carrinho extends AppCompatActivity {
 
         tConteudo = findViewById(R.id.tConteudo);
         lCarrinho = findViewById(R.id.svProdutos);
-        tPreco = findViewById(R.id.tPrecoCarrinho);
+        tPreco = findViewById(R.id.tPrecoProduto);
         bComprar = findViewById(R.id.bComprar);
         bLimpar = findViewById(R.id.bLimpar);
         bRemover = findViewById(R.id.bRemover);
@@ -44,16 +43,13 @@ public class Carrinho extends AppCompatActivity {
         final Singleton singleton = Singleton.getInstance();
         listaProduto = singleton.getCarrinho();
 
-        if (listaProduto != null || !listaProduto.isEmpty()) {
-
+        if (listaProduto != null) {
             try{
                 addProdutos(listaProduto);
             } catch (Exception e){
                 e.printStackTrace();
             }
 
-        } else {
-            tConteudo.setVisibility(View.GONE);
         }
 
         bComprar.setOnClickListener(new View.OnClickListener() {
