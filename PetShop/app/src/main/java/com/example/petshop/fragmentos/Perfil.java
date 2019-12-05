@@ -27,7 +27,9 @@ public class Perfil extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Infla o XML de perfil de usuário
-        return inflater.inflate(R.layout.perfil, container, false);
+        View view = inflater.inflate(R.layout.perfil, container, false);
+
+        return view;
     }
 
 }

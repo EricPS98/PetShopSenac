@@ -14,6 +14,11 @@
             android:icon="@drawable/nav_icon_home"
             android:title="Início" />
         <item
+            android:id="@+id/action_carrinho"
+            android:icon="@drawable/nav_icon_shopping"
+            android:title="Carrinho"
+            app:showAsAction="always" />
+        <item
             android:id="@+id/action_perfil"
             android:icon="@drawable/nav_icon_profile"
             android:title="Meu Perfil" />
@@ -25,11 +30,6 @@
             android:id="@+id/action_sobre"
             android:icon="@drawable/nav_icon_about"
             android:title="Sobre" />
-        <item
-            android:id="@+id/action_carrinho"
-            android:icon="@drawable/nav_icon_shopping"
-            android:title="Carrinho"
-            app:showAsAction="always" />
 
     </group>
 

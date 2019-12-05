@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.petshop.R;
 
@@ -16,6 +17,7 @@ import com.example.petshop.R;
  */
 public class Sobre extends Fragment {
 
+    private LinearLayout lRodape;
 
     public Sobre() {
         // Required empty public constructor
@@ -27,7 +29,9 @@ public class Sobre extends Fragment {
                              Bundle savedInstanceState) {
 
         //Infla o XML de sobre
-        return inflater.inflate(R.layout.sobre, container, false);
+        View view = inflater.inflate(R.layout.sobre, container, false);
+
+        return view;
     }
 
 }
